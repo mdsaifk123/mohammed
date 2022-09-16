@@ -1,7 +1,7 @@
 #!/bin/bash
 
-HW_PACKAGE="learning_ros"
-HW_LAUNCH="hw2.launch"
+HW_PACKAGE="project_ros"
+HW_LAUNCH="launch_ros.launch"
 
 source /environment.sh
 
