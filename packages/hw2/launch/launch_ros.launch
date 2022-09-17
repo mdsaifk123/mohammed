@@ -1,4 +1,8 @@
 <launch>
-  <node pkg="project_ros" type="first_node" name="turtle" output="screen" />
-  <node pkg="turtlesim_helper" type="turtle1" name="t" output="screen"  />
+
+  <group ns="turtlesim">
+    <node pkg="turtlesim" type="turtlesim_node" name="sim" t />
+    <node pkg="project_ros" type="first_node" name="turtle" />
+  </group>
+  
 </launch>
