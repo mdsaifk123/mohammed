@@ -1,6 +1,6 @@
 # parameters
 ARG REPO_NAME="mohammed"
-ARG DESCRIPTION="Base robotics class repo for UML EECE 5560 fall22"
+ARG DESCRIPTION="Base robotics class EECE 5560 fall22"
 ARG MAINTAINER="mohammed (saifurrahman0997@gmail.com)"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/
 ARG ICON="cube"
