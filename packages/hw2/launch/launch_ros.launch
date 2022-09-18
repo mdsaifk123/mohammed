@@ -1,8 +1,11 @@
 <launch>
 
-  <group ns="turtlesim">
-    <node pkg="turtlesim" type="turtlesim_node" name="sim" t />
-    <node pkg="project_ros" type="first_node" name="turtle" />
-  </group>
+        <node pkg="turtlesim_helper" type="turtlesim_node.py" name="sim" />
+    
+    <group ns="turtlesim">
+    
+        <node pkg="homework2_ros" type="turtle_sq.py" name="turtle" />
+  
+    </group>
   
 </launch>
