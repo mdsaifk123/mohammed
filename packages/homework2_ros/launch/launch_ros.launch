@@ -1,10 +1,10 @@
 <launch>
 
-        <node pkg="turtlesim_helper" type="turtlesim_node.py" name="sim" />
+<include file="turtlesim_helper/launch/turtlesim.launch" />
     
-    <group ns="turtlesim">
+ <group ns="turtlesim">
     
-        <node pkg="homework2_ros" type="turtle_sq.py" name="turtle" />
+  <node pkg="homework2_ros" type="try" name="turtle" />
   
     </group>
   

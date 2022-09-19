@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW_PACKAGE="project_ros"
+HW_PACKAGE="homework2_ros"
 HW_LAUNCH="launch_ros.launch"
 
 source /environment.sh

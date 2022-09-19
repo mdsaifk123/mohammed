@@ -26,5 +26,5 @@ def turtle_sq(lin_vel,ang_vel):
 if __name__ == '__main__':
     try:
         turtle_sq(float(sys.argv[1]),float(sys.argv[2]))
-   except rospy.ROSInterruptException:
+    except rospy.ROSInterruptException:
        pass
