@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Twist
 import sys
@@ -25,6 +25,6 @@ def turtle_sq(lin_vel,ang_vel):
 
 if __name__ == '__main__':
     try:
-        turtle_sq(float(sys.argv[1]),float(sys.argv[2]))
+        turtle_sq(float(sys.argv[1]),float(sys.argv[1]))
     except rospy.ROSInterruptException:
        pass
