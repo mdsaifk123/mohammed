@@ -12,7 +12,7 @@ def move_sq():
     vel_msg = Twist()   
 
     while not rospy.is_shutdown():
-        speed = 0.25
+        speed = 0.1
         distance = 2
         angle = 90
         
@@ -49,7 +49,7 @@ def move_sq():
 
 
     #Converting from angles to radians
-        angular_speed = angle*PI/180
+        angular_speed = 15*PI/180
         vel_msg.angular.z = abs(angular_speed)
         relative_angle_1 = angle*PI/180
         relative_angle = abs(relative_angle_1)
@@ -70,37 +70,7 @@ def move_sq():
              #Force the robot to stop
         velocity_publisher.publish(vel_msg)
         #rospy.spin()
-
-        #speed = 1
-        #distance = 2
-        #angle = 90
         
-
-
-        # #Since we are moving just in x-axis
-        # vel_msg.linear.x = speed
-        # vel_msg.linear.y = 0
-        # vel_msg.linear.z = 0
-        # vel_msg.angular.x = 0
-        # vel_msg.angular.y = 0
-        # vel_msg.angular.z = 0
-    
-        # #Setting the current time for distance calculus
-        # t0 = rospy.Time.now().to_sec()
-        # current_distance = 0
-        
-
-        # #Loop to move the turtle in an specified distance
-        # while(current_distance <= distance):
-        # #Publish the velocity
-        #     velocity_publisher.publish(vel_msg)
-        # #Takes actual time to velocity calculus
-        #     t1=rospy.Time.now().to_sec()
-        # #Calculates distancePoseStamped
-        #     current_distance= speed*(t1-t0)
-
-    
-
 if __name__ == '__main__':
     try:
     #Testing our function
