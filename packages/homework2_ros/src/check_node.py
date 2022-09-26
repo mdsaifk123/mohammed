@@ -57,6 +57,7 @@ def move_sq():
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*2*PI/360
         
+        time.sleep(2)
         current_angle = 0
         t0 = rospy.Time.now().to_sec()
 
@@ -74,8 +75,8 @@ def move_sq():
             #Force the robot to stop
       #  velocity_publisher.publish(vel_msg)
         #rospy.spin()
-    vel_msg.linear.x = 0
-    vel_msg.angular.z = 0    
+    #vel_msg.linear.x = 0
+    #vel_msg.angular.z = 0    
     
 
 if __name__ == '__main__':
