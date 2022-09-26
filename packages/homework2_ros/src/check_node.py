@@ -13,8 +13,9 @@ def move_sq():
     rospy.init_node('move_sq', anonymous=True)
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
+    i = 0
 
-    while True:
+    while i < 2:
         speed = 0.25
         distance = 2
         angle = 90
@@ -53,13 +54,14 @@ def move_sq():
 
 
      #Converting from angles to radians
-        angular_speed = 5*2*PI/360
+        angular_speed = angle*2*PI/360
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*2*PI/360
         
-        time.sleep(2)
+        
         current_angle = 0
         t0 = rospy.Time.now().to_sec()
+        
 
         while(current_angle <= relative_angle):
         
@@ -71,7 +73,7 @@ def move_sq():
             #After the loop, stops the robot
         
         
-        
+        i += 1
             #Force the robot to stop
       #  velocity_publisher.publish(vel_msg)
         #rospy.spin()
