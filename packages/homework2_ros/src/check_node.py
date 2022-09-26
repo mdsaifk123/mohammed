@@ -12,9 +12,9 @@ def move_sq():
     vel_msg = Twist()   
 
     while not rospy.is_shutdown():
-        speed = 2
+        speed = 0.25
         distance = 2
-        #angle = 90
+        angle = 90
         
         #Since we are moving just in x-axis
         vel_msg.linear.x = speed
@@ -49,9 +49,9 @@ def move_sq():
 
 
     #Converting from angles to radians
-        angular_speed = 10*PI/180
+        angular_speed = angle*PI/180
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle_1 = 90*PI/180
+        relative_angle_1 = angle*PI/180
         relative_angle = abs(relative_angle_1)
         current_angle = 0
         t0 = rospy.Time.now().to_sec()

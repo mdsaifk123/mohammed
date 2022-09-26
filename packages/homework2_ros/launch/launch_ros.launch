@@ -4,7 +4,7 @@
     
  <group ns="turtlesim">
     
-  <node pkg="homework2_ros" type="try.py" name="turtle" />
+  <node pkg="homework2_ros" type="check_node.py" name="turtle" />
   
  </group>
   
