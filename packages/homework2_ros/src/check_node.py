@@ -3,9 +3,9 @@
 from sqlite3 import Time
 from turtle import speed
 import rospy
-import time
 from geometry_msgs.msg import Twist
 import math
+import time
 
 
 
@@ -15,14 +15,15 @@ def move_sq():
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
     i = 0
-    
+    time.sleep(3)
 
     while i <= 7:
-        speed = 0.5
+        speed = 0.25
+        angle = 90
         distance = 2
         
         print(i)
-
+        
         #Since we are moving just in x-axis
         vel_msg.linear.x = speed
         vel_msg.linear.y = 0
@@ -40,6 +41,7 @@ def move_sq():
         #Loop to move the turtle in an specified distance
         while(current_distance <= distance):
         #Publish the velocity
+            
             velocity_publisher.publish(vel_msg)
         #Takes actual time to velocity calculus
             t1=rospy.Time.now().to_sec()
@@ -54,21 +56,22 @@ def move_sq():
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
         
-        angle = 90
+        
         
 
      #Converting from angles to radians
-        angular_speed = 45*(math.pi/180)
+        angular_speed = 75*(math.pi/180)
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle= angle*(math.pi/180)
+        relative_angle= angle*2*(math.pi/180)
         
         
         current_angle = 0
         t0 = rospy.Time.now().to_sec()
         
 
-        while(current_angle < relative_angle):
-        
+        while(current_angle <= relative_angle):
+            
+            time.sleep(1)
             velocity_publisher.publish(vel_msg)
             t1 = rospy.Time.now().to_sec()
             
