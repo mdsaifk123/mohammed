@@ -12,7 +12,7 @@ def move_sq():
     vel_msg = Twist()   
 
     while not rospy.is_shutdown():
-        speed = 0.1
+        speed = 1
         distance = 2
         angle = 90
         
@@ -49,7 +49,7 @@ def move_sq():
 
 
     #Converting from angles to radians
-        angular_speed = 15*PI/180
+        angular_speed = 5*PI/180
         vel_msg.angular.z = abs(angular_speed)
         relative_angle_1 = angle*PI/180
         relative_angle = abs(relative_angle_1)
@@ -66,11 +66,12 @@ def move_sq():
             #After the loop, stops the robot
         
         
-        vel_msg.angular.z = 0
+        
              #Force the robot to stop
         velocity_publisher.publish(vel_msg)
-        #rospy.spin()
-        
+    vel_msg.linear.x = 0    
+    rospy.spin()
+
 if __name__ == '__main__':
     try:
     #Testing our function
