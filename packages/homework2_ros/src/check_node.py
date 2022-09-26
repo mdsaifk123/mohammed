@@ -73,7 +73,7 @@ def move_sq():
             #After the loop, stops the robot
         
         
-        i += 1
+    i += 1
             #Force the robot to stop
       #  velocity_publisher.publish(vel_msg)
         #rospy.spin()
