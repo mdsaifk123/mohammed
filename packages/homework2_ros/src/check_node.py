@@ -5,16 +5,16 @@ import rospy
 from geometry_msgs.msg import Twist
 PI = 3.14
 
+
+
 def move_sq():
     # Starts a new node
     rospy.init_node('move_sq', anonymous=True)
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
 
-    for i in range(2):
-
     while not rospy.is_shutdown():
-        speed = 1
+        speed = 0.25
         distance = 2
         angle = 90
         
@@ -25,8 +25,8 @@ def move_sq():
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
         vel_msg.angular.z = 0
- 
-     #Setting the current time for distance calculus
+
+    #Setting the current time for distance calculus
         t0 = rospy.Time.now().to_sec()
         current_distance = 0
         
@@ -53,8 +53,8 @@ def move_sq():
     #Converting from angles to radians
         angular_speed = 5*PI/180
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle_1 = angle*PI/180
-        relative_angle = abs(relative_angle_1)
+        relative_angle= angle*PI/180
+        
         current_angle = 0
         t0 = rospy.Time.now().to_sec()
 
@@ -69,10 +69,11 @@ def move_sq():
         
         
         
-             #Force the robot to stop
+            #Force the robot to stop
         velocity_publisher.publish(vel_msg)
-    #rospy.spin()
-    #vel_msg.linear.x = 0    
+    rospy.spin(2)
+    vel_msg.linear.x = 0
+    vel_msg.angular.z = 0    
     
 
 if __name__ == '__main__':
