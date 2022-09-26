@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from sqlite3 import Time
 from turtle import speed
 import rospy
 import time
@@ -17,7 +18,7 @@ def move_sq():
     
 
     while i <= 7:
-        speed = 0.25
+        speed = 0.5
         distance = 2
         
         print(i)
@@ -57,7 +58,7 @@ def move_sq():
         
 
      #Converting from angles to radians
-        angular_speed = angle*(math.pi/180)
+        angular_speed = 45*(math.pi/180)
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*(math.pi/180)
         
@@ -66,7 +67,7 @@ def move_sq():
         t0 = rospy.Time.now().to_sec()
         
 
-        while(current_angle <= relative_angle):
+        while(current_angle < relative_angle):
         
             velocity_publisher.publish(vel_msg)
             t1 = rospy.Time.now().to_sec()
