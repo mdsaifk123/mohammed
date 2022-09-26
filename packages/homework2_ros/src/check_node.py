@@ -73,7 +73,7 @@ def move_sq():
         
             #Force the robot to stop
       #  velocity_publisher.publish(vel_msg)
-        rospy.spin(2)
+        #rospy.spin()
     vel_msg.linear.x = 0
     vel_msg.angular.z = 0    
     
