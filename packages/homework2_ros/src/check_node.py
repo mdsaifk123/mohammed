@@ -19,7 +19,7 @@ def move_sq():
 
     while i <= 7:
         speed = 0.25
-        angle = 90
+        
         distance = 2
         
         print(i)
@@ -55,14 +55,14 @@ def move_sq():
         vel_msg.linear.z = 0
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
-        
+        angle = 90
         
         
 
      #Converting from angles to radians
-        angular_speed = 75*(math.pi/180)
+        angular_speed = 45*math.pi/180
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle= angle*2*(math.pi/180)
+        relative_angle= angle*math.pi/180
         
         
         current_angle = 0
