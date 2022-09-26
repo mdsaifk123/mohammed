@@ -11,6 +11,8 @@ def move_sq():
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
 
+    for i in range(2):
+
     while not rospy.is_shutdown():
         speed = 1
         distance = 2
@@ -69,8 +71,9 @@ def move_sq():
         
              #Force the robot to stop
         velocity_publisher.publish(vel_msg)
-    vel_msg.linear.x = 0    
-    rospy.spin()
+    #rospy.spin()
+    #vel_msg.linear.x = 0    
+    
 
 if __name__ == '__main__':
     try:
