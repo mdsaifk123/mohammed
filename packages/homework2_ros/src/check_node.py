@@ -4,7 +4,7 @@ from turtle import speed
 import rospy
 import time
 from geometry_msgs.msg import Twist
-PI = 3.14278
+import math
 
 
 
@@ -14,12 +14,13 @@ def move_sq():
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
     i = 0
+    
 
-    while i < 2:
+    while i <= 7:
         speed = 0.25
         distance = 2
-        angle = 90
-        time.sleep(5)
+        
+        print(i)
 
         #Since we are moving just in x-axis
         vel_msg.linear.x = speed
@@ -32,7 +33,8 @@ def move_sq():
      #Setting the current time for distance calculus
         t0 = rospy.Time.now().to_sec()
         current_distance = 0
-        
+    
+
 
         #Loop to move the turtle in an specified distance
         while(current_distance <= distance):
@@ -51,12 +53,13 @@ def move_sq():
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
         
-
+        angle = 90
+        
 
      #Converting from angles to radians
-        angular_speed = angle*2*PI/360
+        angular_speed = angle*(math.pi/180)
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle= angle*2*PI/360
+        relative_angle= angle*(math.pi/180)
         
         
         current_angle = 0
@@ -73,13 +76,12 @@ def move_sq():
             #After the loop, stops the robot
         
         
-    i += 1
+        i += 1
+        vel_msg.linear.x = 0
+        vel_msg.angular.z = 0 
             #Force the robot to stop
-      #  velocity_publisher.publish(vel_msg)
-        #rospy.spin()
-    #vel_msg.linear.x = 0
-    #vel_msg.angular.z = 0    
-    
+        #velocity_publisher.publish(vel_msg)
+     
 
 if __name__ == '__main__':
     try:
