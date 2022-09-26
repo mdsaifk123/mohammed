@@ -1,13 +1,6 @@
 <launch>
-
     
- <group ns="turtlesim">
-  
-  
   <node pkg="turtlesim" type="turtlesim_node" name="sim />  
-  <node pkg="homework2_ros" type="check_node.py" name="turtle" />
-  
-  
- </group>
+  <node pkg="homework2_ros" type="check_node" name="turtle_sq" />
   
 </launch>
