@@ -49,18 +49,18 @@ def move_sq():
             current_distance= speed*(t1-t0)
 
         
-                #Since we are moving just in x-axis
+        #Since we are moving just in x-axis
         vel_msg.linear.x = 0
         vel_msg.linear.y = 0
         vel_msg.linear.z = 0
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
-        angle = 90
+        angle = 180
         
         
 
      #Converting from angles to radians
-        angular_speed = 45*math.pi/180
+        angular_speed = 90*math.pi/180
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*math.pi/180
         
