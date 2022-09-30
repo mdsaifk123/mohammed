@@ -11,17 +11,17 @@ import time
 def move_sq():
     # Starts a new node
     rospy.init_node('move_sq', anonymous=True)
-    velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
+    velocity_publisher = rospy.Publisher('turtlesim/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
     i = 0
     time.sleep(3)
 
-    while i <= 7:
+    while True:   #i <= 7
         speed = 1
         
         distance = 2
         
-        print(i)
+        #print(i)
         
         #Since we are moving just in x-axis
         vel_msg.linear.x = speed
@@ -80,7 +80,7 @@ def move_sq():
         
         
     
-        i += 1
+        #i += 1
         vel_msg.linear.x = 0
         vel_msg.angular.z = 0 
             #Force the robot to stop

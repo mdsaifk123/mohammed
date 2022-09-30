@@ -4,7 +4,7 @@
   <node pkg="homework2_ros" type="check_node.py" name="turtle_sq" />
   <node pkg="homework2_ros" type="check_sub.py" name="homework3" />
   <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph" />
-  <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args output_topic" />
+  <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args= "echo /turtlesim/turtle1/pose" />
   
   
 </launch>
