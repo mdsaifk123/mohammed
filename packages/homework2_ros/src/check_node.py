@@ -58,13 +58,13 @@ def move_sq():
         
 
      #Converting from angles to radians
-        angular_speed = abs(angle*math.pi/180)
-        vel_msg.angular.z = abs(angular_speed)
+        angular_speed = angle*math.pi/180
+        vel_msg.angular.z = angular_speed
         relative_angle= angle*math.pi/180
         
         
         current_angle = 0
-        time.sleep(0.2)
+        time.sleep(0.02)
         t0 = rospy.Time.now().to_sec()
         
 
