@@ -3,6 +3,7 @@
 import rospy
 from turtlesim.msg import Pose
 from turtlesim_helper.msg import UnitsLabelled
+from geometry_msgs.msg import Twist
 import math
 
 
@@ -13,8 +14,8 @@ class homework3:
         self.Yold = 0
         self.pub_msg = UnitsLabelled()
         self.pub_msg.units = "meters"
-        rospy.Subscriber("/turtlesim/turtle1/pose", Pose, self.callback)
-        self.pub_units = rospy.Publisher("/turtlesim_helper/turtle1/cmd_vel", UnitsLabelled, queue_size=10)
+        rospy.Subscriber("turtle1/pose", Pose, self.callback)
+        self.pub_units = rospy.Publisher("turtle1/cmd_vel", UnitsLabelled, queue_size=10)
 
 
     def callback(self):
