@@ -17,7 +17,7 @@ def move_sq():
     time.sleep(3)
 
     while i <= 7:
-        speed = 0.25
+        speed = 1
         
         distance = 2
         
@@ -35,7 +35,6 @@ def move_sq():
         t0 = rospy.Time.now().to_sec()
         current_distance = 0
     
-
 
         #Loop to move the turtle in an specified distance
         while(current_distance <= distance):
@@ -59,12 +58,13 @@ def move_sq():
         
 
      #Converting from angles to radians
-        angular_speed = angle*math.pi/180
+        angular_speed = abs(angle*math.pi/180)
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*math.pi/180
         
         
         current_angle = 0
+        time.sleep(0.2)
         t0 = rospy.Time.now().to_sec()
         
 
@@ -73,12 +73,13 @@ def move_sq():
             
             velocity_publisher.publish(vel_msg)
             t1 = rospy.Time.now().to_sec()
+            
             current_angle = angular_speed*(t1-t0)
 
             #After the loop, stops the robot
         
         
-        time.sleep(0.2)
+    
         i += 1
         vel_msg.linear.x = 0
         vel_msg.angular.z = 0 
