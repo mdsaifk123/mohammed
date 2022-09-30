@@ -8,7 +8,6 @@ import math
 import time
 
 
-
 def move_sq():
     # Starts a new node
     rospy.init_node('move_sq', anonymous=True)
@@ -55,12 +54,12 @@ def move_sq():
         vel_msg.linear.z = 0
         vel_msg.angular.x = 0
         vel_msg.angular.y = 0
-        angle = 180
+        angle = 90
         
         
 
      #Converting from angles to radians
-        angular_speed = 90*math.pi/180
+        angular_speed = angle*math.pi/180
         vel_msg.angular.z = abs(angular_speed)
         relative_angle= angle*math.pi/180
         
@@ -71,15 +70,15 @@ def move_sq():
 
         while(current_angle <= relative_angle):
             
-            time.sleep(1)
+            
             velocity_publisher.publish(vel_msg)
             t1 = rospy.Time.now().to_sec()
-            
             current_angle = angular_speed*(t1-t0)
 
             #After the loop, stops the robot
         
         
+        time.sleep(0.2)
         i += 1
         vel_msg.linear.x = 0
         vel_msg.angular.z = 0 
