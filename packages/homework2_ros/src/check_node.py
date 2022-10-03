@@ -16,8 +16,8 @@ def move_sq():
     i = 0
     time.sleep(3)
 
-    while True:   #i <= 7
-        speed = 1
+    while i <= 7 :
+        speed = 0.5
         
         distance = 2
         
@@ -58,13 +58,13 @@ def move_sq():
         
 
      #Converting from angles to radians
-        angular_speed = angle*math.pi/180
+        angular_speed = angle*2*math.pi/360
         vel_msg.angular.z = abs(angular_speed)
-        relative_angle= angle*math.pi/180
+        relative_angle= angle*2*math.pi/360
         
         
         current_angle = 0
-        time.sleep(0.02)
+        
         t0 = rospy.Time.now().to_sec()
         
 
@@ -80,7 +80,7 @@ def move_sq():
         
         
     
-        #i += 1
+        i += 1
         vel_msg.linear.x = 0
         vel_msg.angular.z = 0 
             #Force the robot to stop

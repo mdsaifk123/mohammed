@@ -1,7 +1,7 @@
 #!/bin/bash
 
-HW_PACKAGE="learning_ros"
-HW_LAUNCH="hw3.launch"
+HW_PACKAGE="homework2_ros"
+HW_LAUNCH="launch_hw3.launch"
 
 source /environment.sh
 
