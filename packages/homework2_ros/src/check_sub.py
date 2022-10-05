@@ -13,12 +13,13 @@ class homework3:
         self.Yold = 0
         self.pub_msg = UnitsLabelled()
         self.pub_msg.units = "meters"
-        rospy.Subscriber("turtle1/pose", Pose, self.callback)
-        self.pub_units = rospy.Publisher("turtle1/cmd_vel", UnitsLabelled, queue_size=10)
+        rospy.Subscriber("/turtlesim/turtle1/pose", Pose, self.callback)
+        self.pub_units = rospy.Publisher("output", UnitsLabelled, queue_size=10)
 
         
 
     def callback(self,msg):
+        self.pose = msg
         self.Xnew = 0
         self.Ynew = 0
         self.total += math.sqrt(pow((self.Xnew-self.Xold),2)+pow((self.Ynew-self.Yold),2))
