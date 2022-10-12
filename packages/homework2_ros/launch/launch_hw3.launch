@@ -1,10 +1,10 @@
 <launch>
     
   <node pkg="turtlesim" type="turtlesim_node" name="sim" />  
-  <node pkg="homework2_ros" type="check_node.py" name="pub" />
+  <node pkg="homework2_ros" type="check_node.py" name="pub" /> -->
   <node pkg="homework2_ros" type="check_sub.py" name="sub" />
   <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph" />
-  <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args= "echo /homework2_ros/output" />
+  <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args= "echo output1" />
   
   
 </launch>

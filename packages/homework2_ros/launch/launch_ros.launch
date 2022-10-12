@@ -1,6 +1,6 @@
 <launch>
     
   <node pkg="turtlesim" type="turtlesim_node" name="sim" />  
-  <node pkg="homework2_ros" type="check_node.py" name="turtle_sq" />
+  <node pkg="homework2_ros" type="check_node.py" name="move_sq" />
   
 </launch>

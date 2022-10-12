@@ -11,15 +11,15 @@ import time
 def move_sq():
     # Starts a new node
     rospy.init_node('move_sq', anonymous=True)
-    velocity_publisher = rospy.Publisher('/turtlesim/turtle1/cmd_vel', Twist, queue_size=10)
+    velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()   
     i = 0
     time.sleep(3)
 
     while i <= 7 :
-        speed = 1
+        speed = 0.25
         angle = 90
-        distance = 7
+        distance = 2
         
         #print(i)
         
