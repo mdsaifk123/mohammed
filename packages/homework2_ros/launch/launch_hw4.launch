@@ -1,0 +1,11 @@
+<launch>
+    
+  <node pkg="turtlesim" type="turtlesim_node" name="sim" />  
+  <node pkg="homework2_ros" type="check_node.py" name="move_sq" /> 
+  <node pkg="homework2_ros" type="check_sub.py" name="check_sub" />
+  <node pkg="homework2_ros" type="check_pram.py" name="check_pram" />
+  <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph" />
+  <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args= "echo output1" />
+  <param name="converter" type="string" value="smoots" />
+  
+</launch>
