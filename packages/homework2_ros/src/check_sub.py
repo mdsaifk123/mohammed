@@ -17,7 +17,7 @@ class homework3:
         rospy.Subscriber("/turtle1/pose", Pose, self.callback)
         #self.pub_raw=rospy.Publisher("output1",Float32, queue_size=10)
         self.pub_units = rospy.Publisher("output1", UnitsLabelled, queue_size=10)
-
+        self.pub_units.publish(self.pub_msg)
         
 
     def callback(self,msg):
