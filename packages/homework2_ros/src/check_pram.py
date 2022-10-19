@@ -6,13 +6,7 @@ from turtlesim_helper.msg import UnitsLabelled
 
 class check_pram:
     def __init__(self):
-        if rospy.has_pram("converter"):
-            self.foo = rospy.get_pram("converter")
-        else:
-            self.foo = "default"
 
-        self.msg = UnitsLabelled()
-        self.msg.units = "smoots"
         rospy.Subscriber("output1", UnitsLabelled, self.callback)
         self.units = rospy.Publisher("output2", UnitsLabelled, queue_size=10)
         self.units.publish(self.msg)
@@ -27,11 +21,9 @@ class check_pram:
 
         if (param == "smoots"):
             msg.units = smoots
-            self.units.publish(self.msg)
 
         elif (param == "meters"):
             msg.units = meters
-            self.units.publish(self.msg)
 
         elif (param == "feet"):
             msg.units = feet
