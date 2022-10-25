@@ -9,11 +9,11 @@ from turtlesim_helper.msg import UnitsLabelled
 class check_param:
     def __init__(self):
 
-        rospy.Subscriber("output1", UnitsLabelled, self.callback)
+
         self.msg = UnitsLabelled()
-        self.msg.units = self.unit
+        self.msg.units = "smoots"
+        rospy.Subscriber("/output1", UnitsLabelled, self.callback)
         self.units = rospy.Publisher("output2", UnitsLabelled, queue_size=10)
-      
 
 
     def callback(self,msg):
@@ -21,7 +21,7 @@ class check_param:
         if rospy.has_param("/converter"):
             self.unit = rospy.get_param("/converter")
         else:
-            self.unit = "default"
+            self.unit = "smoots"
 
 
         if (self.unit == "meters"):
