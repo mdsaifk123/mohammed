@@ -6,6 +6,6 @@
   <node pkg="homework2_ros" type="check_pram.py" name="check_pram" />
   <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph" />
   <node pkg="rostopic" type="rostopic" name="rostopic" output="screen" args= "echo output2" />
-  <param name="converter" type="string" value="meters" />
+  <param name="converter" type="string" value="smoots" />
   
 </launch>

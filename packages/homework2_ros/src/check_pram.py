@@ -4,30 +4,35 @@ import rospy
 from turtlesim_helper.msg import UnitsLabelled
 
 
+
 class check_pram:
     def __init__(self):
 
         rospy.Subscriber("output1", UnitsLabelled, self.callback)
         self.units = rospy.Publisher("output2", UnitsLabelled, queue_size=10)
-        self.units.publish(self.msg)
+      
 
 
     def callback(self,msg):
-        
+    
+        if rospy.has_param("converter"):
+            self.foo = rospy.get_param("converter")
+        else:
+            self.foo = "default"
+
         #funtion  for conversion
-        meters = 0.3048*(msg.msg)
+        meters = (msg.msg)
         smoots = (msg.msg)/5.583
-        feet = msg.msg
+        feet = 0.3048*(msg.msg)
 
         if (param == "smoots"):
             msg.units = smoots
 
-        elif (param == "meters"):
-            msg.units = meters
-
-        elif (param == "feet"):
-            msg.units = feet
+        else: 
+            self.msg.value = msg.value*0.587613
             self.units.publish(self.msg)
+        
+        
 
 
 if __name__=='__main__':
