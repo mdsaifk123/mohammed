@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HW_PACKAGE="homework9"
-HW_LAUNCH="hw9.launch"
+HW_LAUNCH="launch_hw9.launch"
 
 source /environment.sh
 

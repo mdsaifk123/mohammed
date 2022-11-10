@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HW_PACKAGE="homework10"
-HW_LAUNCH="hw10.launch"
+HW_LAUNCH="launch_hw10.launch"
 
 source /environment.sh
 

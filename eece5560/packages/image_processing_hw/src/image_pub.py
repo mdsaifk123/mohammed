@@ -13,7 +13,7 @@ if __name__=="__main__":
         exit()
     
     # get the filename from the command line
-    filename = sys.argv[1]
+    filename = sys.argv[2]
     
     # initialize our node and create a publisher as normal
     rospy.init_node("image_publisher", anonymous=True)

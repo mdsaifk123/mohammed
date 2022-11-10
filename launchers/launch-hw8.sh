@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HW_PACKAGE="homework8"
-HW_LAUNCH="hw8.launch"
+HW_LAUNCH="launch_hw8.launch"
 
 source /environment.sh
 
