@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys
+
 import rospy
 import cv2
 from sensor_msgs.msg import Image
@@ -23,24 +23,29 @@ class Homework8:
         self.ts = message_filters.TimeSynchronizer([self.sub_cropped, self.sub_yellow, self.sub_white], 10)
         self.ts.registerCallback(self.callback)
 
+
+        self.pub_canny = rospy.Publisher("/image_edges",Image, queue_size=10)
         # publishes final white filtered image
         self.pub_white = rospy.Publisher("image_lines_white",Image, queue_size=10)
         # publishes final yellow filtered image
         self.pub_yellow = rospy.Publisher("image_lines_yellow",Image, queue_size=10)
 
 
-    def callback(self, cropped_msg, yellow_msg, white_msg):
+    def callback(self, cropped_msg, yellow_msg, white_msg, ):
 
         # images to be edge detected
         cropped_cv = self.bridge.imgmsg_to_cv2(cropped_msg, "bgr8")
         yellow_cv = self.bridge.imgmsg_to_cv2(yellow_msg, "mono8")
         white_cv = self.bridge.imgmsg_to_cv2(white_msg, "mono8")
-
-        # convert the cropped_image to gray 
-        grey_img = cv2.cvtColor(cropped_cv,cv2.COLOR_BGR2GRAY)
+        
 
         # perform edge detection
-        edges = cv2.Canny(grey_img,0,255)
+        edges = cv2.Canny(cropped_cv,0,255)
+
+         # convert canny image back to be published
+        canny = self.bridge.cv2_to_imgmsg(edges, "mono8")
+        self.pub_canny.publish(canny)
+
 
         # dilate function
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(7,7))
@@ -65,17 +70,21 @@ class Homework8:
         # yellow lines Probabilistic Hough Transform
         lines_yellow = cv2.HoughLinesP(and_yellow, 1, np.pi/180, 5, None, 2, 2)
 
-        # draw blue line on the two images from Assignment
+        # draw blue line on the two images
         image_lines_white = self.output_lines(cropped_cv, lines_white)
         image_lines_yellow = self.output_lines(cropped_cv, lines_yellow)
+
+
 
         # convert images back to be published
         ros_white = self.bridge.cv2_to_imgmsg(image_lines_white, "bgr8")
         ros_yellow = self.bridge.cv2_to_imgmsg(image_lines_yellow, "bgr8")
+       
 
         # publish white/yellow filtered images
         self.pub_white.publish(ros_white)
         self.pub_yellow.publish(ros_yellow)
+
 
     # draw blue lines 
     def output_lines(self, original_image, lines):
